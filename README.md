@@ -44,6 +44,11 @@ current command appears to be a shell (e.g. `bash` or `fish`), but passes the
 This is because when you are not in a shell, you will most likely be in an
 interactive (e.g. `curses`-based) app, and many of those use <kbd>Esc</kbd>.
 
+You can however customize the whole-line regexp used to decide for which
+apps to bind <kbd>Esc</kbd> to normal mode. The default corresponds to:
+
+	set -g @normalmode-regexp '[a-z]*sh.*'
+
 If you want to enter normal mode in an interactive terminal app, you can either
 use the default binding <kbd>Ctrl</kbd>+<kbd>b</kbd> <kbd>[</kbd>, or you could
 map your own in `tmux.conf`. For instance, I like to use <kbd>Alt</kbd>+<kbd>y</kbd>:
