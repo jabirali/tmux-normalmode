@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Make sure we use the built-in `vi` keys.
-set-window-option -g mode-keys vi
+tmux set-window-option -g mode-keys vi
 
 # Map Esc to activate `tmux` copy mode, but only for shells.  Shell detection
 # is currently quite simple; it assumes that any shells follow the convention
