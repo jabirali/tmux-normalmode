@@ -22,13 +22,15 @@ To install this plugin via the [Tmux Plugin Manager][1], just add this to `tmux.
 
 Specifically, these are the keybindings mapped by this plugin:
 
-| Keybinding                   | Description         |
-| ---------------------------- | ------------------- |
-| <kbd>Esc</kbd>               | Enter "normal mode" |
-| <kbd>i</kbd> or <kbd>a</kbd> | Enter "insert mode" |
-| <kbd>y</kbd>                 | Yank selection      |
-| <kbd>v</kbd>                 | Select characters   |
-| <kbd>Ctrl</kbd>+<kbd>v</kbd> | Select rectangle    |
+| Keybinding                                   | Description            |
+| -------------------------------------------- | ---------------------- |
+| <kbd>Esc</kbd>                               | Enter "normal mode"    |
+| <kbd>i</kbd> or <kbd>a</kbd>                 | Enter "insert mode"    |
+| <kbd>y</kbd>                                 | Yank selection         |
+| <kbd>v</kbd>                                 | Select characters      |
+| <kbd>Ctrl</kbd>+<kbd>v</kbd>                 | Select rectangle       |
+| <kbd>Ctrl</kbd>+<kbd>p</kbd> or <kbd>[</kbd> | Previous shell prompt  |
+| <kbd>Ctrl</kbd>+<kbd>n</kbd> or <kbd>]</kbd> | Next shell prompt      |
 
 Above, "normal mode" refers to `tmux` copy mode, where `vim`-like keybindings
 apply. "Insert mode" is the `tmux` root mode, i.e. the default mode in `tmux`.
@@ -47,6 +49,12 @@ use the default binding <kbd>Ctrl</kbd>+<kbd>b</kbd> <kbd>[</kbd>, or you could
 map your own in `tmux.conf`. For instance, I like to use <kbd>Alt</kbd>+<kbd>y</kbd>:
 
 	bind -n 'M-y' copy-mode
+
+As a bonus feature, if you have a distinctive set of characters in your shell
+prompt like `❯` or `>>>`, you can get keybindings to navigate between them.
+To enable these, add a setting to your `tmux.conf` describing your prompt:
+
+     set -g @normalmode-prompt '❯'
 
 [1]: https://github.com/tmux-plugins/tpm
 [2]: https://github.com/tmux/tmux/wiki

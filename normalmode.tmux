@@ -18,3 +18,21 @@ tmux bind -T copy-mode-vi 'V'   send -X select-line
 tmux bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
 tmux bind -T copy-mode-vi 'i'   send -X cancel
 tmux bind -T copy-mode-vi 'a'   send -X cancel
+
+# Bonus feature: Prompt navigation commands.
+prompt="$(tmux show-option -gv @normalmode-prompt 2>/dev/null)"
+if [ -n "$prompt" ]
+then
+	tmux bind -T copy-mode-vi '[' \
+		send -X start-of-line \\\;\
+		send -X search-backward "$prompt"
+	tmux bind -T copy-mode-vi 'C-p' \
+		send -X start-of-line \\\;\
+		send -X search-backward "$prompt"
+	tmux bind -T copy-mode-vi ']' \
+		send -X end-of-line  \\\;\
+		send -X search-forward  "$prompt"
+	tmux bind -T copy-mode-vi 'C-n' \
+		send -X end-of-line  \\\;\
+		send -X search-forward  "$prompt"
+fi
