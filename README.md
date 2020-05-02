@@ -1,16 +1,16 @@
 # Tmux Normalmode
 
-If you spend a lot of time in a terminal, then [`tmux`][2] "copy mode" is very useful.
-If you set `mode-keys` to `vi`, it lets you move around the terminal output using
-`vim`-like keyboard shortcuts, paging or copying content without a mouse. 
+If you spend a lot of time in a terminal, [`tmux`][2] "copy mode" is useful.
+It lets you move around the terminal via `vim`-like keyboard shortcuts,
+scrolling and copying terminal contents without reaching for a mouse. 
 
-However, even in `vi` mode, many keybindings are quite different from `vim`: you 
-e.g. activate it with <kbd>Ctrl</kbd>+<kbd>b</kbd> <kbd>[</kbd>, start selecting
-with <kbd>Space</kbd>, and yank with <kbd>Enter</kbd>. In contrast, `vim` enters
-normal mode with <kbd>Esc</kbd>, starts selecting with <kbd>v</kbd>, and yanks
-with <kbd>y</kbd>. There are other minor differences that can be confusing. This
-plugin makes `tmux` copy mode more similar to `vim` normal mode, thus reducing
-context switching.
+However, even when you set the `tmux` `mode-keys` to `vi`, many of the keybindings
+are quite different from `vim`: you  e.g. activate it with <kbd>Ctrl</kbd>+<kbd>b</kbd>
+<kbd>[</kbd>, start selecting with <kbd>Space</kbd>, and yank with <kbd>Enter</kbd>.
+In contrast, `vim` enters normal mode with <kbd>Esc</kbd>, starts selecting with
+<kbd>v</kbd>, and yanks with <kbd>y</kbd>. There are other minor differences that
+can be confusing. This plugin makes `tmux` copy mode more similar to `vim` normal
+mode, thus reducing context switching.
 
 ## Quickstart
 
@@ -32,11 +32,9 @@ Specifically, these are the keybindings mapped by this plugin:
 
 Above, "normal mode" refers to `tmux` copy mode, where `vim`-like keybindings
 apply. "Insert mode" is the `tmux` root mode, i.e. the default mode in `tmux`.
-
 Most other relevant `vim` keybindings such as <kbd>Shift</kbd>+<kbd>v</kbd>,
 <kbd>Ctrl</kbd>+<kbd>u</kbd>, <kbd>Ctrl</kbd>+<kbd>d</kbd>, are already supported
-by `tmux` by default. See `man tmux`, specifically under `WINDOWS AND PANES`, for
-a list of those built-in `vi`-mode keybindings.
+by `tmux` by default. See `man tmux`, specifically under `WINDOWS AND PANES`.
 
 The <kbd>Esc</kbd> binding tries to be smart: it activates copy mode if the
 current command appears to be a shell (e.g. `bash` or `fish`), but passes the
