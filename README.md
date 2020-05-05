@@ -43,8 +43,10 @@ current command appears to be a shell (e.g. `bash` or `fish`), but passes the
 <kbd>Esc</kbd> binding on to the running program if not (e.g. `vim` or `man`).
 This is because when you are not in a shell, you will most likely be in an
 interactive (e.g. `curses`-based) app, and many of those use <kbd>Esc</kbd>.
-You can customize the whole-line regexp used to decide for which
-apps to bind <kbd>Esc</kbd> to normal mode. The default is:
+The binding is disabled by default, since people that use `vi` bindings in
+their shell may not want it enabled. To enable it, you have to specify a
+whole-line regexp that matches your shell. For instance, to match any
+command like `bash` or `fish` that end in `sh`, set this regexp to:
 
 	set -g @normalmode-regexp '[a-z]*sh.*'
 

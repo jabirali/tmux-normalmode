@@ -3,20 +3,16 @@
 # Make sure we use the built-in `vi` keys.
 tmux set-window-option -g mode-keys vi
 
-# Map Esc to activate `tmux` copy mode, but only for shells.  Shell detection
-# is currently quite simple; it assumes that any shells follow the convention
-# of names that end in `sh`, such as `bash`, `dash`, `zsh`, `fish`, and `tcsh`.
+# Map Esc to activate `tmux` copy mode, but only for a specified shell regexp.
 # You can customize the regexp used for shell detection via `@normalmode-regexp`.
 regexp="$(tmux show-option -gv @normalmode-regexp 2>/dev/null)"
-if [ -z "$regexp" ]
+if [ -n "$regexp" ]
 then
-	regexp='[a-z]*sh.*'
+	tmux bind -n 'Escape' \
+		if-shell "[ -z '#{s/^$regexp\$//:pane_current_command}' ]" \
+			'copy-mode' \
+			'send-keys Escape'
 fi
-
-tmux bind -n 'Escape' \
-	if-shell "[ -z '#{s/^$regexp\$//:pane_current_command}' ]" \
-		'copy-mode' \
-		'send-keys Escape'
 
 # When in copy mode, use keybindings more similar to `vim` normal mode.
 tmux bind -T copy-mode-vi 'i'   send -X cancel
