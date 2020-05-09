@@ -17,7 +17,7 @@ fi
 # When in copy mode, use keybindings more similar to `vim` normal mode.
 tmux bind -T copy-mode-vi 'i'   send -X cancel
 tmux bind -T copy-mode-vi 'a'   send -X cancel
-tmux bind -T copy-mode-vi 'y'   send -X copy-selection-no-clear
+tmux bind -T copy-mode-vi 'y'   send -X copy-selection
 tmux bind -T copy-mode-vi 'v'   send -X begin-selection
 tmux bind -T copy-mode-vi 'V'   send -X select-line
 tmux bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
